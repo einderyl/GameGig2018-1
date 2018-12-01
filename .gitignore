@@ -26,7 +26,8 @@ Temp/
 *.pdb
 *.opendb
 *.VC.db
-
+*.prefab.meta
+*.cs.meta
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
