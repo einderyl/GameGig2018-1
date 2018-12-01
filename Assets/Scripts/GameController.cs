@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Vector3 spawnLoc = getLeftOfScreen(Lane.A);
+        spawnLoc.x = 0;
         Track.instance.spawnObstacle(Wall, spawnLoc);
     }
 	
@@ -77,4 +78,3 @@ public class GameController : MonoBehaviour {
         return cameraPosition;
     }
 }
-

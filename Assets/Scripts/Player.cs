@@ -6,18 +6,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    enum lane
+    public enum Lane
     {
-        top,
-        bottom,
+        Top,
+        Bottom,
     }
 
     public float _speed = 10f; // TODO: replace with game default speed gameLogic.instance._defaultspeed
     public float _swapspeed = 100f; // TODO: replace with game default speed gameLogic.instance._defaultswapspeed
-    private int _health = 100; // TODO: replace all instances with gameLogic.instance._defaulthealth
+    public Lane _lane = Lane.Top;
+    private int _health = 1000; // TODO: replace all instances with gameLogic.instance._defaulthealth
     private float _damageMultiplier = 1f; // 0f for immunity  / * >1f for boosted dmg etc
     private float _damageMultiplierTimeOut;
-    private lane _lane = lane.top;
 
 	// Update is called once per frame
 	void Update () {
@@ -26,8 +26,7 @@ public class Player : MonoBehaviour {
         }
 
         // Testing function
-        if (Input.anyKeyDown)
-        {
+        if (Input.GetKeyDown("space")) {
             swapLanes();
         }
 
@@ -36,12 +35,24 @@ public class Player : MonoBehaviour {
         transform.position += _speed * Vector3.right * Time.deltaTime;
 
         // Move lanes if necessary
-        if (_lane == lane.bottom && curr_pos.y > -2.5) {
+        if (_lane == Lane.Bottom && curr_pos.y > -2.5) {
             transform.position += _swapspeed * Vector3.down * Time.deltaTime;
+            if (transform.position.y < -2.5f)
+            {
+                Vector3 pos = transform.position;
+                pos.y = -2.5f;
+                transform.position = pos;
+            }
         }
-        if (_lane == lane.top && curr_pos.y < 2.5)
+        if (_lane == Lane.Top && curr_pos.y < 2.5)
         {
             transform.position += _swapspeed * Vector3.up * Time.deltaTime;
+            if (transform.position.y > 2.5f)
+            {
+                Vector3 pos = transform.position;
+                pos.y = 2.5f;
+                transform.position = pos;
+            }
         }
 
     }
@@ -60,7 +71,7 @@ public class Player : MonoBehaviour {
 
     public void setSpeedMultiplier(float multiplier, float timeout)
     {
-        _speed *= multiplier;
+        _speed /= multiplier;
         getRidOfSpeedMultiplier(timeout); // After timeout ms reset speed to default speed
 
     }
@@ -69,11 +80,11 @@ public class Player : MonoBehaviour {
     {
         switch (_lane)
         {
-            case lane.top:
-                _lane = lane.bottom;
+            case Lane.Top:
+                _lane = Lane.Bottom;
                 break;
-            case lane.bottom:
-                _lane = lane.top;
+            case Lane.Bottom:
+                _lane = Lane.Top;
                 break;
         }
     }
@@ -95,15 +106,20 @@ public class Player : MonoBehaviour {
 
     private void getRidOfSpeedMultiplier(float timeout)
     {
-        var aTimer = new Timer(timeout); // Note timeout is in milliseconds, eg 1000 is 1 sec
-        aTimer.Elapsed += new ElapsedEventHandler(TimerEventSpeed);
+        var aTimer = new Timer(2); // Note timeout is in milliseconds, eg 1000 is 1 sec
+        aTimer.Elapsed += TimerEventSpeed;
+        aTimer.Interval = 2;
+        aTimer.AutoReset = false;
         aTimer.Enabled = true;
-        aTimer.Stop();
+        aTimer.Start();
+
+        Debug.Log("Timer 1 event");
         aTimer.Dispose();
     }
 
     private void TimerEventSpeed(object src, ElapsedEventArgs e)
     {
+        Debug.Log("Timer event");
         _speed = 10f; // TODO: replace with game default speed gameLogic.instance._defaultspeed
     }
 

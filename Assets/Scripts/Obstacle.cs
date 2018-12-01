@@ -24,12 +24,13 @@ public class Obstacle : MonoBehaviour {
     // On Collision with any of the players
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Player")
+        if (other.tag == "Player")
         {
+            Debug.Log("HI");
             var hit = other.gameObject;
             var health = other.gameObject.GetComponent<Player>();
-            health.subtractHealth(100);
-            other.gameObject.GetComponent<Player>().setSpeedMultiplier(50f, .5f);
+            health.subtractHealth(DAMAGE);
+            other.gameObject.GetComponent<Player>().setSpeedMultiplier(SPEED_MULTIPLIER, SPEED_TIMEOUT);
 
         }
     }
