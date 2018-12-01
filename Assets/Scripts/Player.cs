@@ -15,17 +15,23 @@ public class Player : MonoBehaviour
     }
 
     private float startingSpeed = 20.0f;
+    private int maxHealth = 100;
 
-    public float _speed = 20.0f; // TODO: replace with game default speed gameLogic.instance._defaultspeed
-    public float _swapspeed = 100f; // TODO: replace with game default speed gameLogic.instance._defaultswapspeed
+    public float _speed; // TODO: replace with game default speed gameLogic.instance._defaultspeed
+    public float _swapspeed = 100; // TODO: replace with game default speed gameLogic.instance._defaultswapspeed
     public Lane _lane = Lane.Top;
 
     private bool _damaged = false;
     private bool _swapping = false;
-    private int _health = 100; // TODO: replace all instances with gameLogic.instance._defaulthealth
+    private int _health; // TODO: replace all instances with gameLogic.instance._defaulthealth
     private float _damageMultiplier = 1f; // 0f for immunity  / * >1f for boosted dmg etc
     private float _damageMultiplierTimeOut;
 
+    void Start()
+    {
+        _speed = startingSpeed;
+        _health = maxHealth;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -87,6 +93,7 @@ public class Player : MonoBehaviour
     public void subtractHealth(int x)
     {
         _health -= (int)(x * _damageMultiplier);
+        _health = Mathf.Min(_health, maxHealth);
         _healthBar.sizeDelta = new Vector2(_health, _healthBar.sizeDelta.y);
     }
 
@@ -101,13 +108,7 @@ public class Player : MonoBehaviour
         _speed /= multiplier;
         Invoke("getRidOfSpeedMultiplier", timeout); // After timeout ms reset speed to default speed
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player" && (!_swapping || _damaged))
-        {
-            swapLanes();
-        }
-    }
+
     public void swapLanes()
     {
         if (_damaged) { return; }

@@ -27,8 +27,7 @@ public class GameController : MonoBehaviour
         else if (instance != this) Destroy(this);
     }
 
-    void Start()
-    {
+    void Start() {
         ObstacleSet = new GameObject[] { Wall, Puddle, Spikes, Wall, Puddle, Spikes, SpeedUp, IncreaseHealth };
     }
 
@@ -74,6 +73,7 @@ public class GameController : MonoBehaviour
     {
         int roll = Random.Range(0, ObstacleSet.Length);
         GameObject obj = ObstacleSet[roll];
+
         Vector3 spawnLoc;
 
         //choose which lane
