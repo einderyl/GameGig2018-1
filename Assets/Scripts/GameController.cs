@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         frameCounter++; 
-        if(frameCounter == 20000)
+        if(frameCounter == 100)
         {
             spawnRandObjects();
             frameCounter = 0;
@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour {
     private void spawnRandObjects()
     {
         GameObject obj;
-        long objectQuantifier = Random.Range(0, 3);
+        float objectQuantifier = Random.Range(0.0f, 3.0f);
         
         //choose which object type (uniform for now)
         if (objectQuantifier <= 1.0)
@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour {
         Vector3 spawnLoc;
 
         //choose which lane
-        if (Random.Range(0, 1) <= 0.5)
+        if (Random.Range(0.0f, 1.0f) <= 0.5)
         {
             spawnLoc = getLeftOfScreen(Lane.A);
         }
