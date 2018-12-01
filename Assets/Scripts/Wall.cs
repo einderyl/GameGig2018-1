@@ -6,7 +6,7 @@ public class Wall : Obstacle {
 
 	// Use this for initialization
 	void Start () {
-        this.DAMAGE = 100;
+        this.DAMAGE = 10;
         this.SPEED_MULTIPLIER = 25f;
         this.SPEED_TIMEOUT = 1.0f;
     }

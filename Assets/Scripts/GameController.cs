@@ -8,20 +8,21 @@ public class GameController : MonoBehaviour {
     private float laneOffset = 2.5f;
 
     public GameObject Wall;
-    public GameObject Hole;
+    public GameObject Puddle;
     public GameObject Spikes;
     public long frameCounter = 0;
     // Use this for initialization
     void Start () {
-        Vector3 spawnLoc = getLeftOfScreen(Lane.A);
-        spawnLoc.x = 0;
-        Track.instance.spawnObstacle(Wall, spawnLoc);
+        //Vector3 spawnLoc = getLeftOfScreen(Lane.A);
+        //spawnLoc.x = 0;
+        //Track.instance.spawnObstacle(Wall, spawnLoc);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        frameCounter++; 
-        if(frameCounter == 20000)
+        frameCounter++;
+        Debug.Log(frameCounter);
+        if(frameCounter >= 50)
         {
             spawnRandObjects();
             frameCounter = 0;
@@ -31,7 +32,7 @@ public class GameController : MonoBehaviour {
     private void spawnRandObjects()
     {
         GameObject obj;
-        long objectQuantifier = Random.Range(0, 3);
+        float objectQuantifier = Random.Range(0.0f, 3.0f);
         
         //choose which object type (uniform for now)
         if (objectQuantifier <= 1.0)
@@ -40,7 +41,7 @@ public class GameController : MonoBehaviour {
         }
         else if (objectQuantifier <= 2.0)
         {
-            obj = Hole;
+            obj = Puddle;
         }
         else
         {
@@ -49,7 +50,7 @@ public class GameController : MonoBehaviour {
         Vector3 spawnLoc;
 
         //choose which lane
-        if (Random.Range(0, 1) <= 0.5)
+        if (Random.Range(0.0f, 1.0f) <= 0.5)
         {
             spawnLoc = getLeftOfScreen(Lane.A);
         }
