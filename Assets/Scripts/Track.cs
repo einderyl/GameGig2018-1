@@ -24,12 +24,12 @@ public class Track : MonoBehaviour {
         transform.position = bgLoc;
         transform.localScale = scale;
     }
-    public void spawnWall(Vector2 loc)
+    public void spawnWall(Vector3 loc)
     {
         spawnObstacle(Wall, loc);
     }
 
-    private void spawnObstacle(GameObject obstacle, Vector2 loc)
+    private void spawnObstacle(GameObject obstacle, Vector3 loc)
     {
         Instantiate(obstacle, loc, Quaternion.identity);
     }

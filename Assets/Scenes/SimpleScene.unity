@@ -140,8 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de3fe0420bdc9248a6bddae5860ef3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ground: {fileID: 1022043698493306, guid: 03d4a77b69e66224788a78b4d25d8e3a, type: 2}
-  Wall: {fileID: 1600199700200836, guid: ccccfe6f68b7bbe4fa6f2dc77f7daaab, type: 2}
+  Wall: {fileID: 1446787458442302, guid: 512aa60bc1c692846b4201e786cdabcf, type: 2}
 --- !u!212 &6997037
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -251,7 +250,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.9999995
+  orthographic size: 10.617922
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
