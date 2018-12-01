@@ -26,12 +26,10 @@ public class Obstacle : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            Debug.Log("HI");
             var hit = other.gameObject;
-            var health = other.gameObject.GetComponent<Player>();
-            health.subtractHealth(DAMAGE);
-            other.gameObject.GetComponent<Player>().setSpeedMultiplier(SPEED_MULTIPLIER, SPEED_TIMEOUT);
-
+            var player = other.gameObject.GetComponent<Player>();
+            player.Hit(DAMAGE, SPEED_MULTIPLIER, SPEED_TIMEOUT);
+            
         }
     }
     private float getRightOfScreen()

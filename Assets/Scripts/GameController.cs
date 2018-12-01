@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
     private float laneOffset = 2.5f;
 
     public GameObject Wall;
-    public GameObject Hole;
+    public GameObject Puddle;
     public GameObject Spikes;
     public long frameCounter = 0;
     // Use this for initialization
@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour {
         }
         else if (objectQuantifier <= 2.0)
         {
-            obj = Hole;
+            obj = Puddle;
         }
         else
         {

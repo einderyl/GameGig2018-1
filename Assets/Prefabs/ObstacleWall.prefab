@@ -6,22 +6,31 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: 1300889865
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+  m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1360841302645310}
-  m_IsPrefabAsset: 1
+  m_IsPrefabParent: 0
 --- !u!1 &1360841302645310
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
+  serializedVersion: 5
   m_Component:
   - component: {fileID: 4084456799053342}
   - component: {fileID: 212140063710530560}
   - component: {fileID: 61125027263746784}
-  - component: {fileID: 114557766764637100}
+  - component: {fileID: 114858997766713752}
   m_Layer: 0
   m_Name: ObstacleWall
   m_TagString: Untagged
@@ -32,10 +41,10 @@ GameObject:
 --- !u!4 &4084456799053342
 Transform:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360841302645310}
-  m_LocalRotation: {x: -0, y: -0, z: 0.70275795, w: 0.71142894}
+  m_LocalRotation: {x: -0, y: -0, z: 0.702758, w: 0.711429}
   m_LocalPosition: {x: 6.1979527, y: -13.936548, z: 0}
   m_LocalScale: {x: 1.19, y: 1.1692, z: 1}
   m_Children: []
@@ -45,7 +54,7 @@ Transform:
 --- !u!61 &61125027263746784
 BoxCollider2D:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360841302645310}
   m_Enabled: 1
@@ -67,21 +76,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5781276, y: 0.30956542}
   m_EdgeRadius: 0
---- !u!114 &114557766764637100
+--- !u!114 &114858997766713752
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360841302645310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f10cf64cd3637b46b9d7d2b3ea22421, type: 3}
+  m_Script: {fileID: 11500000, guid: 461e341f00743734ba3a55a368d06419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212140063710530560
 SpriteRenderer:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360841302645310}
   m_Enabled: 1
@@ -91,7 +100,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -110,8 +118,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1300889865
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ac969f5a01651f348a7eecc50ac1535b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -123,4 +131,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
