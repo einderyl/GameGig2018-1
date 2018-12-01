@@ -25,7 +25,8 @@ public class Obstacle : MonoBehaviour {
             var hit = other.gameObject;
             var player = other.gameObject.GetComponent<Player>();
             player.Hit(DAMAGE, SPEED_MULTIPLIER, SPEED_TIMEOUT);
-            
+            Vector2 pos = new Vector2(-20.0f, 0.0f);
+            transform.position = pos;
         }
     }
 }
