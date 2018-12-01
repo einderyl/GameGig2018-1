@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     public GameObject Puddle;
     public GameObject Spikes;
 
+    public gamemaster gm; 
+
     public GameObject[] ObstacleSet;
 
     public List<GameObject> obstacles = new List<GameObject>();
@@ -48,10 +50,10 @@ public class GameController : MonoBehaviour
         switch (loser)
         {
             case "Player 1":
-                Debug.Log("Player 2 wins");
+                gm.GameOver("Player 2");
                 break;
             case "Player 2":
-                Debug.Log("Player 1 wins");
+                gm.GameOver("Player 1");
                 break;
         }
     }
