@@ -13,15 +13,16 @@ public class GameController : MonoBehaviour {
     public long frameCounter = 0;
     // Use this for initialization
     void Start () {
-        Vector3 spawnLoc = getLeftOfScreen(Lane.A);
-        spawnLoc.x = 0;
-        Track.instance.spawnObstacle(Wall, spawnLoc);
+        //Vector3 spawnLoc = getLeftOfScreen(Lane.A);
+        //spawnLoc.x = 0;
+        //Track.instance.spawnObstacle(Wall, spawnLoc);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        frameCounter++; 
-        if(frameCounter == 100)
+        frameCounter++;
+        Debug.Log(frameCounter);
+        if(frameCounter >= 50)
         {
             spawnRandObjects();
             frameCounter = 0;

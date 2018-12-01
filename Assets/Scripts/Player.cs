@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-                swapLanes();
+            swapLanes();
         }
     }
     public void swapLanes()
