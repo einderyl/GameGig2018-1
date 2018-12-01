@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-
+    public RectTransform _healthBar;
     public enum Lane
     {
         Top,
@@ -61,6 +62,7 @@ public class Player : MonoBehaviour {
     // Main functions to call
     public void subtractHealth(int x) {
         _health -= (int) (x * _damageMultiplier);
+        _healthBar.sizeDelta = new Vector2(_health, _healthBar.sizeDelta.y);
     }
 
     public void setDamageMultiplier(float multiplier, float timeout) {
