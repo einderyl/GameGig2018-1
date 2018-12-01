@@ -23,9 +23,4 @@ public class Track : MonoBehaviour {
         transform.position = bgLoc;
         transform.localScale = scale;
     }
-
-    public void spawnObstacle(GameObject obstacle, Vector3 loc)
-    {
-        Instantiate(obstacle, loc, Quaternion.identity);
-    }
 }

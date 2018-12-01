@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public static GameController instance;
     enum Lane { A, B };
     private float laneOffset = 2.5f;
 
     public GameObject Wall;
     public GameObject Puddle;
     public GameObject Spikes;
-    public long frameCounter = 0;
-    // Use this for initialization
+
+    public List<GameObject> obstacles = new List<GameObject>();
+    private long frameCounter = 0;
+
+    void Awake()
+    {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(this);
+    }
+
     void Start () {
         //Vector3 spawnLoc = getLeftOfScreen(Lane.A);
         //spawnLoc.x = 0;
@@ -21,13 +30,25 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         frameCounter++;
-        Debug.Log(frameCounter);
         if(frameCounter >= 50)
         {
             spawnRandObjects();
+            deleteItems();
             frameCounter = 0;
         }
+
 	}
+
+    private void deleteItems()
+    {
+        foreach (GameObject obstacle in obstacles)
+        {
+            if (obstacle != null && obstacle.transform.position.x < getRightOfScreen() - 10)
+            {
+                Object.Destroy(obstacle);
+            }
+        }
+    }
 
     private void spawnRandObjects()
     {
@@ -58,8 +79,9 @@ public class GameController : MonoBehaviour {
         {
             spawnLoc = getLeftOfScreen(Lane.B);
         }
-        Track.instance.spawnObstacle(obj, spawnLoc);
-
+        GameObject obstacle = Instantiate(obj, spawnLoc, Quaternion.identity);
+        obstacle.transform.parent = transform;
+        obstacles.Add(obstacle);
     }
 
 
@@ -77,5 +99,9 @@ public class GameController : MonoBehaviour {
                 break;
         }
         return cameraPosition;
+    }
+    private float getRightOfScreen()
+    {
+        return Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f)).x;
     }
 }
