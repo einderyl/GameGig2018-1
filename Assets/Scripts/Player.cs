@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
         Top,
         Bottom,
     }
-
     private float startingSpeed = 20.0f;
     private int maxHealth = 100;
 
@@ -132,7 +131,7 @@ public class Player : MonoBehaviour
 
     private void getRidOfSpeedMultiplier()
     {
-        _speed = startingSpeed;
+        _speed = GameController.startingSpeed;
         _damaged = false;
         //Set alpha to 1.0f
         SpriteRenderer spRend = transform.GetComponent<SpriteRenderer>();
