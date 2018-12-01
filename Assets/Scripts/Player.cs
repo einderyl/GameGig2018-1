@@ -3,21 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class player : MonoBehaviour {
-
-    enum lane
+public class Player : MonoBehaviour {
+    public RectTransform _healthBar;
+    public enum Lane
     {
-        top,
-        bottom,
+        Top,
+        Bottom,
     }
 
     public float _speed = 10f; // TODO: replace with game default speed gameLogic.instance._defaultspeed
     public float _swapspeed = 100f; // TODO: replace with game default speed gameLogic.instance._defaultswapspeed
-    private int _health = 100; // TODO: replace all instances with gameLogic.instance._defaulthealth
+    public Lane _lane = Lane.Top;
+    private int _health = 1000; // TODO: replace all instances with gameLogic.instance._defaulthealth
     private float _damageMultiplier = 1f; // 0f for immunity  / * >1f for boosted dmg etc
     private float _damageMultiplierTimeOut;
-    private lane _lane = lane.top;
 
 	// Update is called once per frame
 	void Update () {
@@ -26,8 +27,7 @@ public class player : MonoBehaviour {
         }
 
         // Testing function
-        if (Input.anyKeyDown)
-        {
+        if (Input.GetKeyDown("space")) {
             swapLanes();
         }
 
@@ -36,75 +36,69 @@ public class player : MonoBehaviour {
         transform.position += _speed * Vector3.right * Time.deltaTime;
 
         // Move lanes if necessary
-        if (_lane == lane.bottom && curr_pos.y > -2.5) {
+        if (_lane == Lane.Bottom && curr_pos.y > -2.5) {
             transform.position += _swapspeed * Vector3.down * Time.deltaTime;
+            if (transform.position.y < -2.5f)
+            {
+                Vector3 pos = transform.position;
+                pos.y = -2.5f;
+                transform.position = pos;
+            }
         }
-        if (_lane == lane.top && curr_pos.y < 2.5)
+        if (_lane == Lane.Top && curr_pos.y < 2.5)
         {
             transform.position += _swapspeed * Vector3.up * Time.deltaTime;
+            if (transform.position.y > 2.5f)
+            {
+                Vector3 pos = transform.position;
+                pos.y = 2.5f;
+                transform.position = pos;
+            }
         }
 
     }
 
 
     // Main functions to call
-    void subtractHealth(int x) {
+    public void subtractHealth(int x) {
         _health -= (int) (x * _damageMultiplier);
+        _healthBar.sizeDelta = new Vector2(_health, _healthBar.sizeDelta.y);
     }
 
-    void setDamageMultiplier(float multiplier, float timeout) {
+    public void setDamageMultiplier(float multiplier, float timeout) {
         _damageMultiplier *= multiplier;
-        getRidOfDamageMultiplier(timeout); // After timeout ms reset dmg multiplier to 1.0f
+        Invoke("getRidOfDamageMultiplier", timeout); // After timeout ms reset dmg multiplier to 1.0f
 
     }
 
-    void setSpeedMultiplier(float multiplier, float timeout)
+    public void setSpeedMultiplier(float multiplier, float timeout)
     {
-        _speed *= multiplier;
-        getRidOfSpeedMultiplier(timeout); // After timeout ms reset speed to default speed
+        _speed /= multiplier;
+        Invoke("getRidOfSpeedMultiplier", timeout); // After timeout ms reset speed to default speed
 
     }
 
-    void swapLanes()
+    public void swapLanes()
     {
         switch (_lane)
         {
-            case lane.top:
-                _lane = lane.bottom;
+            case Lane.Top:
+                _lane = Lane.Bottom;
                 break;
-            case lane.bottom:
-                _lane = lane.top;
+            case Lane.Bottom:
+                _lane = Lane.Top;
                 break;
         }
     }
 
 
     // Private helper functions
-    private void getRidOfDamageMultiplier(float timeout) {
-        var aTimer = new Timer(timeout); // Note timeout is in milliseconds, eg 1000 is 1 sec
-        aTimer.Elapsed += new ElapsedEventHandler(TimerEventDmg);
-        aTimer.Enabled = true;
-        aTimer.Stop();
-        aTimer.Dispose();
-    }
-
-    private void TimerEventDmg(object src, ElapsedEventArgs e)
-    {
+    private void getRidOfDamageMultiplier() {
         _damageMultiplier = 1.0f;
     }
 
-    private void getRidOfSpeedMultiplier(float timeout)
-    {
-        var aTimer = new Timer(timeout); // Note timeout is in milliseconds, eg 1000 is 1 sec
-        aTimer.Elapsed += new ElapsedEventHandler(TimerEventSpeed);
-        aTimer.Enabled = true;
-        aTimer.Stop();
-        aTimer.Dispose();
+    void getRidOfSpeedMultiplier() {
+        _speed = 10.0f;
     }
-
-    private void TimerEventSpeed(object src, ElapsedEventArgs e)
-    {
-        _speed = 10f; // TODO: replace with game default speed gameLogic.instance._defaultspeed
-    }
-
+  
 }
