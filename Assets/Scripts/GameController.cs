@@ -11,11 +11,12 @@ public class GameController : MonoBehaviour {
     public GameObject Puddle;
     public GameObject Spikes;
     public long frameCounter = 0;
+
+    public Player A;
+    public Player B;
+
     // Use this for initialization
     void Start () {
-        //Vector3 spawnLoc = getLeftOfScreen(Lane.A);
-        //spawnLoc.x = 0;
-        //Track.instance.spawnObstacle(Wall, spawnLoc);
     }
 	
 	// Update is called once per frame
