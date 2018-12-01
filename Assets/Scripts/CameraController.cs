@@ -5,8 +5,10 @@ using System.Collections.Generic;
 public class CameraController : MonoBehaviour
 {
 
-    public GameObject player1;
-    public GameObject player2;
+    public Player _player1;
+    public Player _player2;
+    private GameObject player1;
+    private GameObject player2;
     private float player1_pos;
     private float player2_pos;
     private float back;
@@ -23,6 +25,8 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
+        player1 = _player1.gameObject;
+        player2 = _player2.gameObject;
         offset = transform.position - player1.transform.position;
         MINIMUM_FOV = Camera.main.fieldOfView;
     }
@@ -41,6 +45,19 @@ public class CameraController : MonoBehaviour
         {
             back = player2_pos;
             front = player1_pos;
+        }
+        if (Mathf.Abs(player1_pos - player2_pos) < 5)
+        {
+            if (Mathf.Abs(player1.transform.position.y - player2.transform.position.y) < 5)
+            {
+                if (player1.transform.position.y == 2.5f)
+                {
+                    _player2.swapLanes();
+                } else if (player1.transform.position.y == -2.5f)
+                {
+                    _player1.swapLanes();
+                }
+            }
         }
         front += 50f;
         var zoom_distance = (front - back) / 5.0f;

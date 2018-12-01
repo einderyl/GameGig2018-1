@@ -289,15 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0347baafe2a6b774b8519e9016102878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 1177326371}
-  player2: {fileID: 1560669750}
-  player1_pos: 0
-  player2_pos: 0
-  back: 0
-  front: 0
-  MINIMUM_FOV: 0
-  lerpTimer: 0
-  smooth: 2
+  _player1: {fileID: 1177326372}
+  _player2: {fileID: 1560669751}
   myCamera: {fileID: 359962613}
 --- !u!1 &1177326371
 GameObject:

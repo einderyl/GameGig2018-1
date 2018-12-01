@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour {
     public GameObject Wall;
     public GameObject Puddle;
     public GameObject Spikes;
+    public GameObject IncreaseHealth;
+    public GameObject SpeedUp;
 
     public GameObject[] ObstacleSet;
 
@@ -23,9 +25,9 @@ public class GameController : MonoBehaviour {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(this);
     }
-
+    
     void Start() {
-        ObstacleSet = new GameObject[] { Wall, Puddle, Spikes };
+        ObstacleSet = new GameObject[] { Wall, Puddle, Spikes, Wall, Puddle, Spikes, SpeedUp, IncreaseHealth };
     }
 
     // Update is called once per frame
@@ -67,7 +69,7 @@ public class GameController : MonoBehaviour {
 
     private void spawnRandObjects()
     {
-        int roll = Random.Range(1, ObstacleSet.Length); // 1, 2 or 3
+        int roll = Random.Range(0, ObstacleSet.Length);
         GameObject obj = ObstacleSet[roll];        
         Vector3 spawnLoc;
 
