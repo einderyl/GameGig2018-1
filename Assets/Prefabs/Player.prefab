@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 100
   healthBar: {fileID: 224750465739186252}
-  _speed: 2.5
+  _speed: 3.5
 --- !u!114 &114405831048847072
 MonoBehaviour:
   m_ObjectHideFlags: 1
