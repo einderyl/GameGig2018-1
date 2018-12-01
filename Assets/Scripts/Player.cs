@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && !_swapping)
+        if (other.tag == "Player" && (!_swapping || _damaged))
         {
             swapLanes();
         }

@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         frameCounter++;
-        if (frameCounter >= 50)
+        if (frameCounter >= 100)
         {
             spawnRandObjects();
             deleteItems();
