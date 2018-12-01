@@ -4,49 +4,71 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public static GameController instance;
     enum Lane { A, B };
     private float laneOffset = 2.5f;
 
     public GameObject Wall;
     public GameObject Puddle;
     public GameObject Spikes;
-    public long frameCounter = 0;
-    // Use this for initialization
-    void Start () {
-        //Vector3 spawnLoc = getLeftOfScreen(Lane.A);
-        //spawnLoc.x = 0;
-        //Track.instance.spawnObstacle(Wall, spawnLoc);
+
+    public GameObject[] ObstacleSet;
+
+    public List<GameObject> obstacles = new List<GameObject>();
+    private long frameCounter = 0;
+
+    void Awake()
+    {
+
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(this);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Start() {
+        ObstacleSet = new GameObject[] { Wall, Puddle, Spikes };
+    }
+
+    // Update is called once per frame
+    void Update() {
         frameCounter++;
-        Debug.Log(frameCounter);
-        if(frameCounter >= 50)
+        if (frameCounter >= 100)
         {
             spawnRandObjects();
+            deleteItems();
             frameCounter = 0;
         }
-	}
+
+    }
+
+    public void GameOver(string loser)
+    {
+        switch (loser)
+        {
+            case "Player 1":
+                Debug.Log("Player 2 wins");
+                break;
+            case "Player 2":
+                Debug.Log("Player 1 wins");
+                break;
+        }
+    }
+
+
+    private void deleteItems()
+    {
+        foreach (GameObject obstacle in obstacles)
+        {
+            if (obstacle != null && obstacle.transform.position.x < getRightOfScreen() - 10)
+            {
+                Object.Destroy(obstacle);
+            }
+        }
+    }
 
     private void spawnRandObjects()
     {
-        GameObject obj;
-        float objectQuantifier = Random.Range(0.0f, 3.0f);
-        
-        //choose which object type (uniform for now)
-        if (objectQuantifier <= 1.0)
-        {
-            obj = Wall;
-        }
-        else if (objectQuantifier <= 2.0)
-        {
-            obj = Puddle;
-        }
-        else
-        {
-            obj = Spikes;
-        }
+        int roll = Random.Range(1, ObstacleSet.Length); // 1, 2 or 3
+        GameObject obj = ObstacleSet[roll];        
         Vector3 spawnLoc;
 
         //choose which lane
@@ -58,8 +80,9 @@ public class GameController : MonoBehaviour {
         {
             spawnLoc = getLeftOfScreen(Lane.B);
         }
-        Track.instance.spawnObstacle(obj, spawnLoc);
-
+        GameObject obstacle = Instantiate(obj, spawnLoc, Quaternion.identity);
+        obstacle.transform.parent = transform;
+        obstacles.Add(obstacle);
     }
 
 
@@ -77,5 +100,9 @@ public class GameController : MonoBehaviour {
                 break;
         }
         return cameraPosition;
+    }
+    private float getRightOfScreen()
+    {
+        return Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f)).x;
     }
 }

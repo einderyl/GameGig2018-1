@@ -289,7 +289,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0347baafe2a6b774b8519e9016102878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1177326371}
+  player1: {fileID: 1177326371}
+  player2: {fileID: 1560669750}
+  player1_pos: 0
+  player2_pos: 0
+  back: 0
+  front: 0
+  MINIMUM_FOV: 0
+  lerpTimer: 0
+  smooth: 2
+  myCamera: {fileID: 359962613}
 --- !u!1 &1177326371
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +312,7 @@ GameObject:
   - component: {fileID: 1177326372}
   - component: {fileID: 1177326376}
   m_Layer: 0
-  m_Name: Player1
+  m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,8 +330,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 2043500076}
-  _speed: 10
-  _swapspeed: 50
+  _speed: 20
+  _swapspeed: 100
   _lane: 0
 --- !u!50 &1177326373
 Rigidbody2D:
@@ -450,7 +459,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1244885400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -300, y: 200, z: 0}
+  m_LocalPosition: {x: -250, y: 200, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 2043500076}
@@ -459,7 +468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: 200}
+  m_AnchoredPosition: {x: -250, y: 200}
   m_SizeDelta: {x: 100, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1244885402
@@ -519,7 +528,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1380603068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 300, y: 200, z: 0}
+  m_LocalPosition: {x: 250, y: 200, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 1734310734}
@@ -528,7 +537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 200}
+  m_AnchoredPosition: {x: 250, y: 200}
   m_SizeDelta: {x: 100, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1380603070
@@ -595,7 +604,8 @@ MonoBehaviour:
   Wall: {fileID: 1264252471139030, guid: a81fc1d5ff85ecf44964bb4e23099e84, type: 2}
   Puddle: {fileID: 1247782191164144, guid: 666c5a3907ee4ef4f8eeb3e277890570, type: 2}
   Spikes: {fileID: 1189104578690208, guid: a34c8cf5be6eb27419d14a8fae3db5ba, type: 2}
-  frameCounter: 0
+  ObstacleSet: []
+  obstacles: []
 --- !u!212 &1404115708
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -728,7 +738,7 @@ GameObject:
   - component: {fileID: 1560669751}
   - component: {fileID: 1560669755}
   m_Layer: 0
-  m_Name: Player2
+  m_Name: Player 2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -746,8 +756,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 1734310734}
-  _speed: 10
-  _swapspeed: 50
+  _speed: 20
+  _swapspeed: 100
   _lane: 1
 --- !u!50 &1560669752
 Rigidbody2D:
