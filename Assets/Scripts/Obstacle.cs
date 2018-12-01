@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
 
-	// Use this for initialization
+    // Use this for initialization
+    protected int DAMAGE;
+    protected float SPEED_MULTIPLIER;
+    protected float SPEED_TIMEOUT;
 	void Start () {
-		
+        this.DAMAGE = 100;
+        this.SPEED_MULTIPLIER = 50f;
+        this.SPEED_TIMEOUT = 0.5f;
 	}
 	
 	// Update is called once per frame
