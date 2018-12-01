@@ -46,9 +46,9 @@ public class CameraController : MonoBehaviour
             back = player2_pos;
             front = player1_pos;
         }
-        if (Mathf.Abs(player1_pos - player2_pos) < 5)
+        if (Mathf.Abs(player1_pos - player2_pos) < 3)
         {
-            if (Mathf.Abs(player1.transform.position.y - player2.transform.position.y) < 5)
+            if (Mathf.Abs(player1.transform.position.y - player2.transform.position.y) < 3)
             {
                 if (player1.transform.position.y == 2.5f)
                 {
@@ -59,8 +59,8 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
-        front += 50f;
-        var zoom_distance = (front - back) / 5.0f;
+        front += 20f;
+        var zoom_distance = (front - back) / 2.0f;
         transform.position = new Vector3(back, transform.position.y, transform.position.z);
         myCamera.orthographicSize = 5.6f + zoom_distance;
     }

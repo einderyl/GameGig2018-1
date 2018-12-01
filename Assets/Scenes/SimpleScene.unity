@@ -597,6 +597,9 @@ MonoBehaviour:
   Wall: {fileID: 1264252471139030, guid: a81fc1d5ff85ecf44964bb4e23099e84, type: 2}
   Puddle: {fileID: 1247782191164144, guid: 666c5a3907ee4ef4f8eeb3e277890570, type: 2}
   Spikes: {fileID: 1189104578690208, guid: a34c8cf5be6eb27419d14a8fae3db5ba, type: 2}
+  IncreaseHealth: {fileID: 1645441683135410, guid: fac84a1505785444292e87253f698fc0,
+    type: 2}
+  SpeedUp: {fileID: 1406703589862234, guid: 25af80e8b76697a42a4b8ac8203a7857, type: 2}
   ObstacleSet: []
   obstacles: []
 --- !u!212 &1404115708

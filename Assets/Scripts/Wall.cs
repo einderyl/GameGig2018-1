@@ -8,7 +8,7 @@ public class Wall : Obstacle {
 	void Start () {
         this.DAMAGE = 10;
         this.SPEED_MULTIPLIER = 25f;
-        this.SPEED_TIMEOUT = 1.0f;
+        this.SPEED_TIMEOUT = 0.7f;
     }
 	
 	// Update is called once per frame

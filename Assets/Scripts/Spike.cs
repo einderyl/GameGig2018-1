@@ -6,7 +6,7 @@ public class Spike : Obstacle {
 
 	// Use this for initialization
 	void Start () {
-        this.DAMAGE = 50;
+        this.DAMAGE = 20;
         this.SPEED_MULTIPLIER = 10f;
         this.SPEED_TIMEOUT = 0.5f;
     }

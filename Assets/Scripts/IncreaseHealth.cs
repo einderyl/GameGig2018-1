@@ -6,7 +6,7 @@ public class IncreaseHealth : Obstacle {
 
 	// Use this for initialization
 	void Start () {
-        this.DAMAGE = -50;
+        this.DAMAGE = -25;
         this.SPEED_MULTIPLIER = 1.0f;
         this.SPEED_TIMEOUT = 0.5f;
 	}
@@ -15,16 +15,5 @@ public class IncreaseHealth : Obstacle {
 	void Update () {
 		
 	}
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            var hit = other.gameObject;
-            var player = other.gameObject.GetComponent<Player>();
-            player.Hit(DAMAGE, SPEED_MULTIPLIER, SPEED_TIMEOUT);
 
-            Vector2 pos = new Vector2(-20.0f, 0.0f);
-            transform.position = pos;
-        }
-    }
 }

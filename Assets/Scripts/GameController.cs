@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
 {
 
     public static GameController instance;
+    public gamemaster gm;
+    public static float startingSpeed = 20.0f;
     enum Lane { A, B };
     private float laneOffset = 2.5f;
 
@@ -29,6 +31,8 @@ public class GameController : MonoBehaviour
 
     void Start() {
         ObstacleSet = new GameObject[] { Wall, Puddle, Spikes, Wall, Puddle, Spikes, SpeedUp, IncreaseHealth };
+
+        startingSpeed = 20.0f ;
     }
 
     // Update is called once per frame
@@ -40,6 +44,7 @@ public class GameController : MonoBehaviour
             spawnRandObjects();
             deleteItems();
             frameCounter = 0;
+            startingSpeed += 1;
         }
 
     }
@@ -49,10 +54,10 @@ public class GameController : MonoBehaviour
         switch (loser)
         {
             case "Player 1":
-                Debug.Log("Player 2 wins");
+                gm.GameOver("Player 2 wins! Play again?");
                 break;
             case "Player 2":
-                Debug.Log("Player 1 wins");
+                gm.GameOver("Player 1 wins! Play again?");
                 break;
         }
     }
