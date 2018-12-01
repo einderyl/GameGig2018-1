@@ -5,7 +5,6 @@ using UnityEngine;
 public class Track : MonoBehaviour {
 
     public static Track instance;
-    public GameObject Wall;
     // Use this for initialization
     void Awake () {
         if (instance == null) instance = this;
@@ -20,16 +19,12 @@ public class Track : MonoBehaviour {
         Vector2 scale = transform.localScale;
         scale.x = cameraSize.x / spriteSize.x;
         Vector3 bgLoc = Camera.main.gameObject.transform.position;
-        bgLoc.z = 0;
+        bgLoc.z = 1;
         transform.position = bgLoc;
         transform.localScale = scale;
     }
-    public void spawnWall(Vector3 loc)
-    {
-        spawnObstacle(Wall, loc);
-    }
 
-    private void spawnObstacle(GameObject obstacle, Vector3 loc)
+    public void spawnObstacle(GameObject obstacle, Vector3 loc)
     {
         Instantiate(obstacle, loc, Quaternion.identity);
     }

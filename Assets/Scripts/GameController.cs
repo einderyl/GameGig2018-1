@@ -6,15 +6,19 @@ public class GameController : MonoBehaviour {
 
     enum Lane { A, B };
     private float laneOffset = 2.5f;
-    
+
+    public GameObject Wall;
+    public GameObject Hole;
+    public GameObject Spikes;
     // Use this for initialization
     void Start () {
         Vector3 spawnLoc = getLeftOfScreen(Lane.A);
-        Track.instance.spawnWall(spawnLoc);
+        Track.instance.spawnObstacle(Wall, spawnLoc);
     }
 	
 	// Update is called once per frame
 	void Update () {
+
 	}
     private Vector3 getLeftOfScreen(Lane lane)
     {

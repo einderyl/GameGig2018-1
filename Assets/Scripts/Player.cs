@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
 
-public class player : MonoBehaviour {
+public class Player : MonoBehaviour {
 
     enum lane
     {
@@ -48,24 +48,24 @@ public class player : MonoBehaviour {
 
 
     // Main functions to call
-    void subtractHealth(int x) {
+    public void subtractHealth(int x) {
         _health -= (int) (x * _damageMultiplier);
     }
 
-    void setDamageMultiplier(float multiplier, float timeout) {
+    public void setDamageMultiplier(float multiplier, float timeout) {
         _damageMultiplier *= multiplier;
         getRidOfDamageMultiplier(timeout); // After timeout ms reset dmg multiplier to 1.0f
 
     }
 
-    void setSpeedMultiplier(float multiplier, float timeout)
+    public void setSpeedMultiplier(float multiplier, float timeout)
     {
         _speed *= multiplier;
         getRidOfSpeedMultiplier(timeout); // After timeout ms reset speed to default speed
 
     }
 
-    void swapLanes()
+    public void swapLanes()
     {
         switch (_lane)
         {

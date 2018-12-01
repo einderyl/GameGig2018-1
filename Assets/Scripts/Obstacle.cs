@@ -23,8 +23,8 @@ public class Obstacle : MonoBehaviour {
         {
             var hit = other.gameObject;
             var health = other.gameObject.GetComponent<Player>();
-            health.TakeDamage(100);
-            other.gameObject.GetComponent<Player>().slowDown(50f);
+            health.subtractHealth(100);
+            other.gameObject.GetComponent<Player>().setSpeedMultiplier(50f, .5f);
 
         }
     }

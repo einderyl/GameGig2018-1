@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de3fe0420bdc9248a6bddae5860ef3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wall: {fileID: 1446787458442302, guid: 512aa60bc1c692846b4201e786cdabcf, type: 2}
 --- !u!212 &6997037
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -172,8 +171,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -12551417
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 14a44245f709fac498802089b2d1f337, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -239,7 +238,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.19852942, g: 0.19852942, b: 0.19852942, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -250,7 +249,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.617922
+  orthographic size: 9.023286
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -306,6 +305,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4636bc52d135db145b49aef18426ce52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Wall: {fileID: 1446787458442302, guid: 512aa60bc1c692846b4201e786cdabcf, type: 2}
+  Hole: {fileID: 1446787458442302, guid: 512aa60bc1c692846b4201e786cdabcf, type: 2}
+  Spikes: {fileID: 1446787458442302, guid: 512aa60bc1c692846b4201e786cdabcf, type: 2}
 --- !u!212 &1404115708
 SpriteRenderer:
   m_ObjectHideFlags: 0
