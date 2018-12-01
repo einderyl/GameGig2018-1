@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
 
     public static GameController instance;
     enum Lane { A, B };
@@ -25,13 +26,14 @@ public class GameController : MonoBehaviour {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(this);
     }
-    
+
     void Start() {
         ObstacleSet = new GameObject[] { Wall, Puddle, Spikes, Wall, Puddle, Spikes, SpeedUp, IncreaseHealth };
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         frameCounter++;
         if (frameCounter >= 100)
         {
@@ -70,7 +72,8 @@ public class GameController : MonoBehaviour {
     private void spawnRandObjects()
     {
         int roll = Random.Range(0, ObstacleSet.Length);
-        GameObject obj = ObstacleSet[roll];        
+        GameObject obj = ObstacleSet[roll];
+
         Vector3 spawnLoc;
 
         //choose which lane
