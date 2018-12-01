@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
         Bottom,
     }
 
-    public float _speed = 10f; // TODO: replace with game default speed gameLogic.instance._defaultspeed
+    private float startingSpeed = 20.0f;
+
+    public float _speed = 20.0f; // TODO: replace with game default speed gameLogic.instance._defaultspeed
     public float _swapspeed = 100f; // TODO: replace with game default speed gameLogic.instance._defaultswapspeed
     public Lane _lane = Lane.Top;
 
     private bool _damaged = false;
+    private bool _swapping = false;
     private int _health = 100; // TODO: replace all instances with gameLogic.instance._defaulthealth
     private float _damageMultiplier = 1f; // 0f for immunity  / * >1f for boosted dmg etc
     private float _damageMultiplierTimeOut;
@@ -26,9 +29,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (_health <= 0)
         {
+            GameController.instance.GameOver(this.name);
             return; // TODO: replace with game end scene
         }
 
@@ -51,6 +54,7 @@ public class Player : MonoBehaviour
                 Vector3 pos = transform.position;
                 pos.y = -2.5f;
                 transform.position = pos;
+                _swapping = false;
             }
         }
         if (_lane == Lane.Top && curr_pos.y < 2.5)
@@ -61,12 +65,12 @@ public class Player : MonoBehaviour
                 Vector3 pos = transform.position;
                 pos.y = 2.5f;
                 transform.position = pos;
+                _swapping = false;
             }
         }
 
     }
-
-
+    
     // Main functions to call
     public void Hit(int damage, float speedMultiplier, float duration)
     {
@@ -99,7 +103,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && (!_swapping || _damaged))
         {
             swapLanes();
         }
@@ -116,6 +120,7 @@ public class Player : MonoBehaviour
                 _lane = Lane.Top;
                 break;
         }
+        _swapping = true;
     }
 
     // Private helper functions
@@ -126,7 +131,7 @@ public class Player : MonoBehaviour
 
     private void getRidOfSpeedMultiplier()
     {
-        _speed = 10.0f;
+        _speed = startingSpeed;
         _damaged = false;
         //Set alpha to 1.0f
         SpriteRenderer spRend = transform.GetComponent<SpriteRenderer>();
