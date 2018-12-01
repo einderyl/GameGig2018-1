@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
 
     public static GameController instance;
+    public gamemaster gm;
     enum Lane { A, B };
     private float laneOffset = 2.5f;
 
@@ -49,10 +50,10 @@ public class GameController : MonoBehaviour
         switch (loser)
         {
             case "Player 1":
-                Debug.Log("Player 2 wins");
+                gm.GameOver("Player 2");
                 break;
             case "Player 2":
-                Debug.Log("Player 1 wins");
+                gm.GameOver("Player 1");
                 break;
         }
     }
