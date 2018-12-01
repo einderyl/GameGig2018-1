@@ -38,17 +38,9 @@ public class gamemaster : MonoBehaviour {
         gameStartButton.enabled = true;
     }
 
-    public void RageQuit()
+    public void GameOver (string s)
     {
-        gameOverText.text = "Ragequitted :-D";
-        gameStartPanel.SetActive(true);
-        gameStartButton.gameObject.SetActive(true);
-        gameStartButton.enabled = true;
-    }
-
-    public void GameOver (string playerName)
-    {
-        gameOverText.text = playerName + " wins! Play again?";
+        gameOverText.text = s;
         gameOverPanel.SetActive(true);
         gameOverButton.gameObject.SetActive(true);
         gameOverButton.enabled = true;

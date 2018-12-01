@@ -1590,12 +1590,17 @@ Prefab:
     - target: {fileID: 114808952588634372, guid: 5a3dec0eca697fd48b4f08f6ba131b80,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RageQuit
+      value: GameOver
       objectReference: {fileID: 0}
     - target: {fileID: 114808952588634372, guid: 5a3dec0eca697fd48b4f08f6ba131b80,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808952588634372, guid: 5a3dec0eca697fd48b4f08f6ba131b80,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Ragequitted :-D
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a3dec0eca697fd48b4f08f6ba131b80, type: 2}

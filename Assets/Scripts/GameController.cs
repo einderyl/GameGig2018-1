@@ -50,10 +50,10 @@ public class GameController : MonoBehaviour
         switch (loser)
         {
             case "Player 1":
-                gm.GameOver("Player 2");
+                gm.GameOver("Player 2 wins! Play again?");
                 break;
             case "Player 2":
-                gm.GameOver("Player 1");
+                gm.GameOver("Player 1 wins! Play again?");
                 break;
         }
     }
