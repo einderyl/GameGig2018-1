@@ -65,14 +65,14 @@ public class Player : MonoBehaviour {
 
     public void setDamageMultiplier(float multiplier, float timeout) {
         _damageMultiplier *= multiplier;
-        getRidOfDamageMultiplier(timeout); // After timeout ms reset dmg multiplier to 1.0f
+        Invoke("getRidOfDamageMultiplier", timeout); // After timeout ms reset dmg multiplier to 1.0f
 
     }
 
     public void setSpeedMultiplier(float multiplier, float timeout)
     {
         _speed /= multiplier;
-        getRidOfSpeedMultiplier(timeout); // After timeout ms reset speed to default speed
+        Invoke("getRidOfSpeedMultiplier", timeout); // After timeout ms reset speed to default speed
 
     }
 
@@ -91,36 +91,12 @@ public class Player : MonoBehaviour {
 
 
     // Private helper functions
-    private void getRidOfDamageMultiplier(float timeout) {
-        var aTimer = new Timer(timeout); // Note timeout is in milliseconds, eg 1000 is 1 sec
-        aTimer.Elapsed += new ElapsedEventHandler(TimerEventDmg);
-        aTimer.Enabled = true;
-        aTimer.Stop();
-        aTimer.Dispose();
-    }
-
-    private void TimerEventDmg(object src, ElapsedEventArgs e)
-    {
+    private void getRidOfDamageMultiplier() {
         _damageMultiplier = 1.0f;
     }
 
-    private void getRidOfSpeedMultiplier(float timeout)
-    {
-        var aTimer = new Timer(2); // Note timeout is in milliseconds, eg 1000 is 1 sec
-        aTimer.Elapsed += TimerEventSpeed;
-        aTimer.Interval = 2;
-        aTimer.AutoReset = false;
-        aTimer.Enabled = true;
-        aTimer.Start();
-
-        Debug.Log("Timer 1 event");
-        aTimer.Dispose();
+    void getRidOfSpeedMultiplier() {
+        _speed = 10.0f;
     }
-
-    private void TimerEventSpeed(object src, ElapsedEventArgs e)
-    {
-        Debug.Log("Timer event");
-        _speed = 10f; // TODO: replace with game default speed gameLogic.instance._defaultspeed
-    }
-
+  
 }
