@@ -12,32 +12,47 @@ public class GameController : MonoBehaviour {
     public GameObject Puddle;
     public GameObject Spikes;
 
+    public GameObject[] ObstacleSet;
+
     public List<GameObject> obstacles = new List<GameObject>();
     private long frameCounter = 0;
 
     void Awake()
     {
+
         if (instance == null) instance = this;
         else if (instance != this) Destroy(this);
     }
 
-    void Start () {
-        //Vector3 spawnLoc = getLeftOfScreen(Lane.A);
-        //spawnLoc.x = 0;
-        //Track.instance.spawnObstacle(Wall, spawnLoc);
+    void Start() {
+        ObstacleSet = new GameObject[] { Wall, Puddle, Spikes };
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         frameCounter++;
-        if(frameCounter >= 50)
+        if (frameCounter >= 50)
         {
             spawnRandObjects();
             deleteItems();
             frameCounter = 0;
         }
 
-	}
+    }
+
+    public void GameOver(string loser)
+    {
+        switch (loser)
+        {
+            case "Player 1":
+                Debug.Log("Player 2 wins");
+                break;
+            case "Player 2":
+                Debug.Log("Player 1 wins");
+                break;
+        }
+    }
+
 
     private void deleteItems()
     {
@@ -52,22 +67,8 @@ public class GameController : MonoBehaviour {
 
     private void spawnRandObjects()
     {
-        GameObject obj;
-        float objectQuantifier = Random.Range(0.0f, 3.0f);
-        
-        //choose which object type (uniform for now)
-        if (objectQuantifier <= 1.0)
-        {
-            obj = Wall;
-        }
-        else if (objectQuantifier <= 2.0)
-        {
-            obj = Puddle;
-        }
-        else
-        {
-            obj = Spikes;
-        }
+        int roll = Random.Range(1, ObstacleSet.Length); // 1, 2 or 3
+        GameObject obj = ObstacleSet[roll];        
         Vector3 spawnLoc;
 
         //choose which lane

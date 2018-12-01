@@ -29,9 +29,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (_health <= 0)
         {
+            GameController.instance.GameOver(this.name);
             return; // TODO: replace with game end scene
         }
 
@@ -70,8 +70,7 @@ public class Player : MonoBehaviour
         }
 
     }
-
-
+    
     // Main functions to call
     public void Hit(int damage, float speedMultiplier, float duration)
     {

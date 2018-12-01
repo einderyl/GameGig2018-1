@@ -16,10 +16,6 @@ public class Obstacle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.x < getRightOfScreen()- 50)
-        {
-            Object.Destroy(this);
-        }
 	}
     // On Collision with any of the players
     private void OnTriggerEnter2D(Collider2D other)
@@ -31,9 +27,5 @@ public class Obstacle : MonoBehaviour {
             player.Hit(DAMAGE, SPEED_MULTIPLIER, SPEED_TIMEOUT);
             
         }
-    }
-    private float getRightOfScreen()
-    {
-        return Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f)).x;
     }
 }
